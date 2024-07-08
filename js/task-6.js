@@ -21,18 +21,31 @@ refs.createBtn.addEventListener('click', () => {
 
 refs.destroyBtn.addEventListener('click', destroyBoxes);
 
+// function createBoxes(amount) {
+//   destroyBoxes();
+//   let boxSize = 30;
+//   const fragment = document.createDocumentFragment();
+
+//   for (let i = 0; i < amount; i++) {
+//     const newBox = document.createElement('div');
+//     newBox.style.width = `${boxSize}px`;
+//     newBox.style.height = `${boxSize}px`;
+//     newBox.style.backgroundColor = getRandomHexColor();
+//     fragment.appendChild(newBox);
+//     boxSize += 10;
+//   }
+// }
 function createBoxes(amount) {
   destroyBoxes();
   let boxSize = 30;
+  let fragment = '';
 
   for (let i = 0; i < amount; i++) {
-    const newBox = document.createElement('div');
-    newBox.style.width = `${boxSize}px`;
-    newBox.style.height = `${boxSize}px`;
-    newBox.style.backgroundColor = getRandomHexColor();
-    refs.boxPlace.appendChild(newBox);
+    const newBox = ` <div  style = "width: ${boxSize}px; height:${boxSize}px; background-color:${getRandomHexColor()} "> </div>`;
+    fragment += newBox;
     boxSize += 10;
   }
+  refs.boxPlace.insertAdjacentHTML('afterbegin', fragment);
 }
 
 function destroyBoxes() {
